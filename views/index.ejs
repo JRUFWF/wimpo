@@ -1,0 +1,12 @@
+<!--<h1>-->
+<!--    <%= page %>-->
+<!--</h1>-->
+<% if (page === 'Home') { %>
+    <%- include ('./pages/home') -%>
+<% } else if (page === 'FAQ') { %>
+    <%- include ('./pages/faq') -%>
+<% } else if (page === 'Tracking Result') { %>
+    <%- include ('./pages/result') -%>
+<% } else if (page === 'Recaptcha') { %>
+    <%- include ('./pages/recaptcha') -%>
+<% } %>

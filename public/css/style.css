@@ -1,0 +1,134 @@
+/* BASE PAGE STYLES */
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  background: transparent;
+  height: 100%;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+body {
+  background: hsl(0, 0%, 100%);
+  color: hsl(0, 0%, 20%);
+  min-height: 100%;
+  -ms-scroll-chaining: none;
+  overscroll-behavior: none;
+  position: relative;
+}
+
+main {
+  padding: 40px 0 6rem;
+}
+
+header {
+  background: hsl(0, 0%, 100%);
+  border-bottom: 4px solid hsl(0, 0%, 60%);
+  border-top: 20px solid hsl(0, 0%, 0%);
+}
+
+header span {
+  font-size: 30px;
+  line-height: 30px;
+  margin: 30px 0;
+  display: inline-block;
+}
+
+header img {
+  border-style: none;
+  position: fixed;
+  left: 80px;
+  top: 50px;
+  height: 30px;
+}
+
+footer {
+  bottom: 30px;
+  font-size: 0.8rem;
+  left: 0;
+  letter-spacing: 2px;
+  padding: 14px 0;
+  position: absolute;
+  right: 0;
+  width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+}
+
+h1 {
+  font-weight: 400;
+}
+
+a,
+a:visited,
+a:hover,
+a:active,
+a:focus {
+  color: #0066cc;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:focus,
+button:focus,
+details:focus,
+input:focus,
+select:focus,
+textarea:focus,
+[tabindex]:focus {
+  -webkit-box-shadow: 0 0 3px 3px hsla(203, 95%, 62%, 0.8);
+  box-shadow: 0 0 3px 3px hsla(203, 95%, 62%, 0.8);
+  outline: none;
+}
+
+/* FAQ styles */
+table {
+  display: inline-table;
+  width: 100%;
+  padding: 20px;
+}
+
+tr {
+  line-height: 40px;
+  text-align: left;
+}
+
+td a {
+  font-size: 22px;
+  color: hsl(0, 0%, 30%);
+}
+
+.form-group {
+  line-height: 60px;
+}
+
+.btn-success {
+  background: hsla(203, 95%, 62%, 0.8);
+  border: none;
+  border-radius:5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.btn-success:hover {
+  background: hsla(203, 95%, 62%, 8);
+}
+
+.center {
+  text-align: center;
+}
