@@ -1,0 +1,43 @@
+<div class="container">
+    <h1>
+        Order Information
+    </h1>
+    <table>
+            <thead>
+                <td>Item</td>
+                <td>Qty Ordered</td>
+                <td>Qty Shipped</td>
+                <td>Tracking Number</td>
+            </thead>
+        <tbody>
+        <% if (data && data.length > 0) { %>
+            <% for(var i=0; i< data.length; i++) {%>
+                <tr>
+                    <td>
+                        <%= data[i]['name'] %>
+                    </td>
+                    <td>
+                        <%= data[i]['ordered'] %>
+                    </td>
+                    <td>
+                        <%= data[i]['shipped'] %>
+                    </td>
+                    <td>
+                        <% if( data[i]['tracking'] !== null ) { %>
+                            <a href=<%= data[i]['tracking'] %> target="_blank">
+                                <%= data[i]['tracking'].split('=')[1] %>
+                            </a>
+                        <% } else { %>
+                            Pending Shipment
+                        <% } %>
+                    </td>
+                </tr>
+            <% } %>
+        <% } else { %>
+            <tr>
+                <td colspan="4" class="center">No Result</td>
+            </tr>
+        <% } %>
+        </tbody>
+    </table>
+</div>
