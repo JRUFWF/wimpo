@@ -79,7 +79,7 @@ header img {
 
 
 @media screen and (max-width: 648px){
-  header .short-name {
+  header span {
     font-size: 16px;
   }
   header img {
@@ -96,28 +96,6 @@ footer {
   position: absolute;
   right: 0;
   width: 100%;
-}
-
-#page-not-found {
-  background-image: url("/404.png");
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-  background-position: center top;
-  background-attachment: fixed;
-}
-
-#page-not-found h1 {
-  margin-top: 30px;
-  font-size: 46px;
-  font-weight: 600;
-}
-
-#page-not-found p {
-  margin-bottom: 30px
-}
-
-#page-not-found .row {
-  margin: 0;
 }
 
 h1,
@@ -159,11 +137,12 @@ textarea:focus,
   outline: none;
 }
 
-/* FAQ styles */
+/*tracking result*/
 table {
   display: inline-table;
   width: 100%;
   padding: 20px;
+  margin-top: 36px;
 }
 
 tr {
@@ -196,8 +175,9 @@ td a {
   text-align: center;
 }
 
-#faq-box {
-  margin: 15px 10vw;
+/* FAQ styles */
+div#faq-box {
+  margin: 0 15px;
 }
 
 #faq-box p {
@@ -214,8 +194,33 @@ td a {
 
 .faq-title {
   color: #ED2232;
+  margin-top: 52px;
 }
 
 .faq-content {
   padding-left: 20px
+}
+
+
+/*404 page*/
+#page-not-found {
+  background-image: url("/404.png");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center top;
+  background-attachment: fixed;
+}
+
+#page-not-found h1 {
+  margin-top: 30px;
+  font-size: 46px;
+  font-weight: 600;
+}
+
+#page-not-found p {
+  margin-bottom: 30px
+}
+
+#page-not-found .row {
+  margin: 0;
 }

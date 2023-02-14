@@ -5,8 +5,10 @@
         </h1>
     <table>
             <thead>
+                <td>ORDER DATE</td>
                 <td>Item</td>
                 <td>Qty Ordered</td>
+                <td>SHIPPED DATE</td>
                 <td>Qty Shipped</td>
                 <td>Tracking Number</td>
             </thead>
@@ -14,10 +16,16 @@
             <% for(var i=0; i< data.length; i++) {%>
                 <tr>
                     <td>
+                        <%= data[i]['orderDate'] %>
+                    </td>
+                    <td>
                         <%= data[i]['name'] %>
                     </td>
                     <td>
                         <%= data[i]['ordered'] %>
+                    </td>
+                    <td>
+                        <%= data[i]['shippedDate'] %>
                     </td>
                     <td>
                         <%= data[i]['shipped'] %>

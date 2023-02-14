@@ -12,12 +12,16 @@ router.get('/captcha', (req, res, next) => {
 router.get('/tracking-result', (req, res, next) => {
   var result = [
     {
+      orderDate: '11/16/2024',
+      shippedDate: '11/26/2024',
       name: 'PPVS FORTIFLORA CNNE SUPL 6*30 CNT N9 US',
       ordered: 200,
       shipped: 200,
       tracking: 'https://www.fedex.com/fedextrack/?trknbr=593987129293',
     },
     {
+      orderDate: '11/16/2024',
+      shippedDate: null,
       name: 'PPVD HA FLN 1X8LB US',
       ordered: 200,
       shipped: 0,
