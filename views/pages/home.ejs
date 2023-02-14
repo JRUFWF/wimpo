@@ -1,30 +1,31 @@
 <div class="container">
-    <form method="post" action="/captcha">
+    <form method="post" id="wimpo-form" action="/captcha">
         <div class="row">
-            <div class="col-md-4"></div>
-            <div class="form-group col-md-8">
-                <label for="order-number">Please enter your purchase order number</label>
-                <input type="text" class="form-control" name="order-number">
+            <div class="form-group">
+                <label for="order-number" class="col-md-6 col-sm-12">Please enter your purchase order number</label>
+                <div class="col-md-4 col-sm-12">
+                    <input type="text" class="form-control" name="order-number">
+                </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4"></div>
-            <div class="form-group col-md-8">
-                <label for="zipcode">Shipping zip code</label>
-                <input type="text" class="form-control" name="zipcode">
+            <div class="form-group">
+                <label for="zipcode" class="col-md-6 col-sm-12">Shipping zip code</label>
+                <div class="col-md-4 col-sm-12">
+                    <input type="text" class="form-control" name="zipcode">
+                </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4"></div>
-            <div class="form-group col-md-8">
+            <div class="form-group">
+                <div class="col-md-6"></div>
                 <!-- add your domain data-sitekey below-->
-                <div class="g-recaptcha" data-sitekey=""></div>
+                <div class="g-recaptcha col-md-6" data-sitekey="6Le-wvkSAAAAAPBMRTvw0Q4Muexq9bi0DJwx_mJ-"></div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4"></div>
-            <div class="form-group col-md-8">
-                <button type="submit" class="btn btn-success" style="margin-left:38px">Submit</button>
+            <div class="form-group">
+                    <button type="submit" class="btn btn-info">Submit</button>
             </div>
         </div>
     </form>

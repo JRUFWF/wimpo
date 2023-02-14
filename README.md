@@ -18,7 +18,10 @@ Run the following script in your command line if starting the repository in deve
 ```
 npm run dev
 ```
-
+In order to enable the recaptcha test,  in development as we are using a self signed certificate for SSL communication
+```
+NODE_TLS_REJECT_UNAUTHORIZED='0' node app.js
+```
 Run the following script in your command line if starting the repository in production mode:
 ```
 npm start

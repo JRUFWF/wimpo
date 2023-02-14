@@ -1,10 +1,13 @@
 <header>
-    <img src="/logo.png" alt="purina logo" />
-    <span>
+    <a href="/">
+        <img src="/logo.png" alt="purina logo" />
+    </a>
+
     <% if (page === 'FAQ') { %>
-       FAQ
+        <span>FAQ </span>
     <% } else{ %>
-       WHERE IS MY PURINA ORDER?
+        <span class="full-name">WHERE IS MY PURINA ORDER?</span>
+        <span class="short-name">WIMPO?</span>
     <% } %>
     </span>
 </header>

@@ -1,8 +1,8 @@
 /* BASE PAGE STYLES */
-
 * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  color: #27251F;
 }
 
 html {
@@ -21,7 +21,7 @@ body {
   position: relative;
 }
 
-main {
+main .container {
   padding: 40px 0 6rem;
 }
 
@@ -38,23 +38,86 @@ header span {
   display: inline-block;
 }
 
+header span {
+  line-height: 30px;
+  margin: 30px 0;
+  display: inline-block;
+}
+
+header .short-name {
+  display: none;
+}
+
+@media screen and (min-width: 1000px) {
+  header .full-name {
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 999px) and (min-width: 768px){
+  header .full-name {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 767px){
+  header .full-name {
+    display: none;
+  }
+  header .short-name {
+    display: block;
+  }
+}
+
 header img {
   border-style: none;
-  position: fixed;
+  position: absolute;
   left: 80px;
   top: 50px;
   height: 30px;
 }
 
+
+@media screen and (max-width: 648px){
+  header .short-name {
+    font-size: 16px;
+  }
+  header img {
+    left: 8px
+  }
+}
+
 footer {
   bottom: 30px;
-  font-size: 0.8rem;
+  font-size: 12px;
   left: 0;
   letter-spacing: 2px;
   padding: 14px 0;
   position: absolute;
   right: 0;
   width: 100%;
+}
+
+#page-not-found {
+  background-image: url("/404.png");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center top;
+  background-attachment: fixed;
+}
+
+#page-not-found h1 {
+  margin-top: 30px;
+  font-size: 46px;
+  font-weight: 600;
+}
+
+#page-not-found p {
+  margin-bottom: 30px
+}
+
+#page-not-found .row {
+  margin: 0;
 }
 
 h1,
@@ -117,18 +180,42 @@ td a {
   line-height: 60px;
 }
 
-.btn-success {
-  background: hsla(203, 95%, 62%, 0.8);
+.btn-info {
+  background: #1C59F6;
   border: none;
   border-radius:5px;
   padding: 10px 20px;
   cursor: pointer;
 }
 
-.btn-success:hover {
-  background: hsla(203, 95%, 62%, 8);
+.btn-info:hover {
+  background: #1C59F6;
 }
 
 .center {
   text-align: center;
+}
+
+#faq-box {
+  margin: 15px 10vw;
+}
+
+#faq-box p {
+  font-family: 'Antenna';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  align-items: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.faq-title {
+  color: #ED2232;
+}
+
+.faq-content {
+  padding-left: 20px
 }
