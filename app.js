@@ -70,7 +70,7 @@ app.post('/', function(req, res) {
                     },
                 ];
             }
-            res.status(200).render('./pages/result', { page: 'Tracking Result', data: result});
+            res.status(200).render('index', { page: 'Tracking Result', data: result});
         } else {
             returnError(error.errorMessage, req.body);
         }
