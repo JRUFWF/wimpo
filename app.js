@@ -23,11 +23,11 @@ app.use(bodyParser.json());
 app.use('/', indexRouter);
 app.post('/', function(req, res) {
     function returnError(errorMessage, formData = null) {
-        var siteKey = process.env.SITEKEY || '';
+        var siteKey = process.env.SITEKEY || '6Le-wvkSAAAAAPBMRTvw0Q4Muexq9bi0DJwx_mJ-';
         res.render('index', { page: 'Home', data: {siteKey, errorMessage, formData}  });
         return;
     }
-    if(req.body['zipcode'].trim() === '') {
+    if(req.body['order-number'].trim() === '') {
         returnError('Please enter order number', req.body );
     }
     if(!(/^\d{5}(-\d{4})?$/).test(req.body['zipcode'])) {
@@ -37,7 +37,7 @@ app.post('/', function(req, res) {
     {
         returnError("recaptcha error", req.body);
     }
-    const secretKey = process.env.SECRETKEY || '';
+    const secretKey = process.env.SECRETKEY || '174faff8fbc769e94a5862391ecfd010';
     const verificationURL = "https://www.google.com/recaptcha/api/siteverify?secret=" + secretKey + "&response=" + req.body['g-recaptcha-response'] + "&remoteip=" + req.connection.remoteAddress;
 
     request(verificationURL,function(error,response,body) {
