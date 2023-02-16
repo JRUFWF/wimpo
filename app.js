@@ -22,22 +22,22 @@ app.use(bodyParser.json());
 
 app.use('/', indexRouter);
 app.post('/', function(req, res) {
-    function returnError(errorMessage) {
+    function returnError(errorMessage, formData = null) {
         var siteKey = process.env.SITEKEY || '';
-        res.render('index', { page: 'Home', data: {siteKey, errorMessage}  });
+        res.render('index', { page: 'Home', data: {siteKey, errorMessage, formData}  });
         return;
-    }
-    if(req.body['g-recaptcha-response'] === undefined || req.body['g-recaptcha-response'] === '' || req.body['g-recaptcha-response'] === null)
-    {
-        returnError("recaptcha error");
     }
     var orderNumber = req.body['zipcode'];
     var zipcode = req.body['zipcode'];
     if(!(/^\d{5}(-\d{4})?$/).test(zipcode)) {
-        returnError('Invalid US Zipcode (e.g.xxxxx or xxxxx-xxxx) : ' + zipcode);
+        returnError('Invalid US Zipcode (e.g.xxxxx or xxxxx-xxxx) : ' + zipcode, req.body);
     }
     if(orderNumber.trim() === '') {
-        returnError('Please enter order number');
+        returnError('Please enter order number', req.body );
+    }
+    if(req.body['g-recaptcha-response'] === undefined || req.body['g-recaptcha-response'] === '' || req.body['g-recaptcha-response'] === null)
+    {
+        returnError("recaptcha error", req.body);
     }
     const secretKey = process.env.SECRETKEY || '';
     const verificationURL = "https://www.google.com/recaptcha/api/siteverify?secret=" + secretKey + "&response=" + req.body['g-recaptcha-response'] + "&remoteip=" + req.connection.remoteAddress;
@@ -47,7 +47,8 @@ app.post('/', function(req, res) {
             body = JSON.parse(body);
 
             if(body.success !== undefined && !body.success) {
-                // returnError("Failed captcha verification");
+                // todo: with the real recaptcha credentials, should uncomment below
+                // returnError("Failed captcha verification", req.body);
             }
             var result = [];
             // todo: query result from api
@@ -73,7 +74,7 @@ app.post('/', function(req, res) {
             }
             res.status(200).render('./pages/result', { page: 'Tracking Result', data: result});
         } else {
-            returnError(res.json({"responseError" : error}));
+            returnError(error.errorMessage, req.body);
         }
      });
 });
