@@ -27,13 +27,11 @@ app.post('/', function(req, res) {
         res.render('index', { page: 'Home', data: {siteKey, errorMessage, formData}  });
         return;
     }
-    var orderNumber = req.body['zipcode'];
-    var zipcode = req.body['zipcode'];
-    if(!(/^\d{5}(-\d{4})?$/).test(zipcode)) {
-        returnError('Invalid US Zipcode (e.g.xxxxx or xxxxx-xxxx) : ' + zipcode, req.body);
-    }
-    if(orderNumber.trim() === '') {
+    if(req.body['zipcode'].trim() === '') {
         returnError('Please enter order number', req.body );
+    }
+    if(!(/^\d{5}(-\d{4})?$/).test(req.body['zipcode'])) {
+        returnError('Invalid US Zipcode (e.g.xxxxx or xxxxx-xxxx) : ' + req.body['zipcode'], req.body);
     }
     if(req.body['g-recaptcha-response'] === undefined || req.body['g-recaptcha-response'] === '' || req.body['g-recaptcha-response'] === null)
     {
