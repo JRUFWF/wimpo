@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req, res, next) => {
-  res.render('index', { page: 'Home' });
+  var siteKey = process.env.SITEKEY || '';
+  res.render('index', { page: 'Home', data: {siteKey} });
 });
 
 router.get('/faq', (req, res, next) => {

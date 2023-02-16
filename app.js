@@ -1,9 +1,13 @@
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const indexRouter = require('./routes/index');
 const bodyParser = require('body-parser');
 const request = require('request');
 const app = express();
+
 const port = process.env.PORT || 3000;
 
 app.use(expressLayouts);
@@ -17,12 +21,25 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 app.use('/', indexRouter);
-app.post('/tracking-result', function(req, res) {
+app.post('/', function(req, res) {
+    function returnError(errorMessage) {
+        var siteKey = process.env.SITEKEY || '';
+        res.render('index', { page: 'Home', data: {siteKey, errorMessage}  });
+        return;
+    }
     if(req.body['g-recaptcha-response'] === undefined || req.body['g-recaptcha-response'] === '' || req.body['g-recaptcha-response'] === null)
     {
-        return res.json({"responseError" : "captcha error"});
+        returnError("recaptcha error");
     }
-    const secretKey = "174faff8fbc769e94a5862391ecfd010";
+    var orderNumber = req.body['zipcode'];
+    var zipcode = req.body['zipcode'];
+    if(!(/^\d{5}(-\d{4})?$/).test(zipcode)) {
+        returnError('Invalid US Zipcode (e.g.xxxxx or xxxxx-xxxx) : ' + zipcode);
+    }
+    if(orderNumber.trim() === '') {
+        returnError('Please enter order number');
+    }
+    const secretKey = process.env.SECRETKEY || '';
     const verificationURL = "https://www.google.com/recaptcha/api/siteverify?secret=" + secretKey + "&response=" + req.body['g-recaptcha-response'] + "&remoteip=" + req.connection.remoteAddress;
 
     request(verificationURL,function(error,response,body) {
@@ -30,10 +47,11 @@ app.post('/tracking-result', function(req, res) {
             body = JSON.parse(body);
 
             if(body.success !== undefined && !body.success) {
-                // return res.json({"responseError" : "Failed captcha verification"});
+                // returnError("Failed captcha verification");
             }
             var result = [];
-            if (req.body['order-number'] && req.body['zipcode']) {
+            // todo: query result from api
+            if (req.body['order-number'] !== 'no') {
                 result = [
                     {
                         orderDate: '11/16/2024',
@@ -55,14 +73,14 @@ app.post('/tracking-result', function(req, res) {
             }
             res.status(200).render('./pages/result', { page: 'Tracking Result', data: result});
         } else {
-            return res.json({"responseError" : error});
+            returnError(res.json({"responseError" : error}));
         }
      });
 });
 
 // catch 404 and forward to error page
 app.use((req, res, next) => {
-    res.status(404).render('404', { page: 'Page not found' });
+    res.status(404).render('index', { page: 'Page not found' });
 });
 
 app.listen(port, console.log(`Server is listening at port ${port}.`));

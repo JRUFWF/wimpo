@@ -3,6 +3,7 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   color: #27251F;
+  font-family: 'Antenna';
 }
 
 html {
@@ -21,10 +22,15 @@ body {
   position: relative;
 }
 
+h1 {
+  font-weight: 400;
+}
+
 main .container {
   padding: 40px 0 6rem;
 }
 
+/*header*/
 header {
   background: hsl(0, 0%, 100%);
   border-bottom: 4px solid hsl(0, 0%, 60%);
@@ -77,7 +83,6 @@ header img {
   height: 30px;
 }
 
-
 @media screen and (max-width: 648px){
   header span {
     font-size: 16px;
@@ -87,6 +92,7 @@ header img {
   }
 }
 
+/*footer*/
 footer {
   bottom: 30px;
   font-size: 12px;
@@ -98,19 +104,7 @@ footer {
   width: 100%;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-top: 0;
-}
-
-h1 {
-  font-weight: 400;
-}
-
+/*general button and link cross pages*/
 a,
 a:visited,
 a:hover,
@@ -135,9 +129,26 @@ textarea:focus,
   -webkit-box-shadow: 0 0 3px 3px hsla(203, 95%, 62%, 0.8);
   box-shadow: 0 0 3px 3px hsla(203, 95%, 62%, 0.8);
   outline: none;
+  cursor: pointer;
+  color: #27251F;
+}
+
+/*home page */
+label {
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.error-message {
+  color: #ED2232;
+  margin-top: 15px;
 }
 
 /*tracking result*/
+.container h2 {
+  margin: 20vh 3vw
+}
+
 table {
   display: inline-table;
   width: 100%;
@@ -150,9 +161,18 @@ tr {
   text-align: left;
 }
 
+th {
+  text-transform: uppercase;
+}
+
 td a {
   font-size: 22px;
   color: hsl(0, 0%, 30%);
+}
+
+.g-recaptcha {
+  display: inline-block;
+  margin: 66px 0 36px;
 }
 
 .form-group {
@@ -162,9 +182,12 @@ td a {
 .btn-info {
   background: #1C59F6;
   border: none;
+  font-size: 14px;
   border-radius:5px;
   padding: 10px 20px;
   cursor: pointer;
+  color: #000 !important;
+  text-transform: uppercase;
 }
 
 .btn-info:hover {
@@ -181,7 +204,6 @@ div#faq-box {
 }
 
 #faq-box p {
-  font-family: 'Antenna';
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -201,14 +223,17 @@ div#faq-box {
   padding-left: 20px
 }
 
-
-/*404 page*/
-#page-not-found {
+/*404 page if with background*/
+/*#page-not-found {
   background-image: url("/404.png");
   background-repeat: no-repeat;
   background-size: 100% auto;
   background-position: center top;
   background-attachment: fixed;
+}*/
+
+#page-not-found .container {
+  margin-top: 20vh;
 }
 
 #page-not-found h1 {
