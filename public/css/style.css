@@ -110,7 +110,7 @@ a:visited,
 a:hover,
 a:active,
 a:focus {
-  color: #0066cc;
+  color: #1C59F6;
   text-decoration: none;
   cursor: pointer;
 }
@@ -139,14 +139,24 @@ label {
   font-size: 14px;
 }
 
+input.form-control {
+  background:#D9D9D9
+}
+
 .error-message {
   color: #ED2232;
   margin-top: 15px;
 }
 
+.g-recaptcha {
+  display: inline-block;
+  margin: 66px 0 36px;
+}
+
 /*tracking result*/
 .container h2 {
-  margin: 20vh 3vw
+  margin: 20vh 3vw;
+  text-transform: capitalize;
 }
 
 table {
@@ -170,17 +180,12 @@ td a {
   color: hsl(0, 0%, 30%);
 }
 
-.g-recaptcha {
-  display: inline-block;
-  margin: 66px 0 36px;
-}
-
 .form-group {
   line-height: 60px;
 }
 
-.btn-info {
-  background: #1C59F6;
+button {
+  background: #ABD3F9;
   border: none;
   font-size: 14px;
   border-radius:5px;
@@ -190,7 +195,7 @@ td a {
   text-transform: uppercase;
 }
 
-.btn-info:hover {
+button:hover {
   background: #1C59F6;
 }
 

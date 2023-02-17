@@ -19,11 +19,12 @@
                 </div>
         </div>
         <div class="row">
-              <!-- add your domain data-sitekey below-->
-             <div class="g-recaptcha" data-sitekey="<%= data['siteKey'] %>"></div>
-        </div>
-        <div class="row">
-            <button id='search' type="submit" class="btn btn-info">Submit</button>
+            <button class="g-recaptcha"
+                    data-sitekey="<%= data['siteKey'] %>"
+                    data-callback='onSubmit'
+                    data-action='submit' type="submit">
+                Submit
+            </button>
         </div>
         <% if (data['errorMessage']) { %>
         <div class="row">
@@ -34,3 +35,10 @@
         <% } %>
     </form>
 </div>
+
+<script>
+    function onSubmit(token) {
+        console.log('recaptcha token: ' + token);
+        document.getElementById("wimpo-form").submit();
+    }
+</script>

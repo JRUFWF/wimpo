@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 app.use('/', indexRouter);
 app.post('/', function(req, res) {
     function returnError(errorMessage, formData = null) {
-        var siteKey = process.env.SITEKEY || '6Le-wvkSAAAAAPBMRTvw0Q4Muexq9bi0DJwx_mJ-';
+        var siteKey = process.env.SITEKEY || '6LckCYkkAAAAAJrj6icP4cgao8-sbHVzfwEHa7sc';
         res.render('index', { page: 'Home', data: {siteKey, errorMessage, formData}  });
         return;
     }
@@ -37,7 +37,7 @@ app.post('/', function(req, res) {
     {
         returnError("recaptcha error", req.body);
     }
-    const secretKey = process.env.SECRETKEY || '174faff8fbc769e94a5862391ecfd010';
+    const secretKey = process.env.SECRETKEY || '6LckCYkkAAAAAEE-XpuCsCJHd-FWQrIOMP0OJE3o';
     const verificationURL = "https://www.google.com/recaptcha/api/siteverify?secret=" + secretKey + "&response=" + req.body['g-recaptcha-response'] + "&remoteip=" + req.connection.remoteAddress;
 
     request(verificationURL,function(error,response,body) {
@@ -45,8 +45,7 @@ app.post('/', function(req, res) {
             body = JSON.parse(body);
 
             if(body.success !== undefined && !body.success) {
-                // todo: with the real recaptcha credentials, should uncomment below
-                // returnError("Failed captcha verification", req.body);
+                returnError("Failed captcha verification", req.body);
             }
             var result = [];
             // todo: query result from api
