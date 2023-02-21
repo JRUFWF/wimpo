@@ -134,9 +134,10 @@ textarea:focus,
 }
 
 /*home page */
-label {
-  text-transform: uppercase;
+.form-group label {
+  text-transform: capitalize;
   font-size: 14px;
+  font-weight: 500;
 }
 
 input.form-control {

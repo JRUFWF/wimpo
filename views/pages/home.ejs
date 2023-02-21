@@ -11,12 +11,14 @@
             </div>
         </div>
         <div class="row">
+            <div class="form-group">
                 <label for="zipcode" class="col-sm-5 col-md-offset-1 col-sm-12">
                     Shipping zip code
                 </label>
                 <div class="col-md-4 col-sm-12">
                     <input type="text" id="zipcode" class="form-control" name="zipcode" value="<%=data['formData'] && data['formData'] ? data['formData']['zipcode']: '' %>">
                 </div>
+            </div>
         </div>
         <div class="row">
             <button class="g-recaptcha"
