@@ -110,7 +110,7 @@ a:visited,
 a:hover,
 a:active,
 a:focus {
-  color: #0066cc;
+  color: #1C59F6;
   text-decoration: none;
   cursor: pointer;
 }
@@ -134,9 +134,20 @@ textarea:focus,
 }
 
 /*home page */
-label {
-  text-transform: uppercase;
+#wimpo-form .row:first-child {
+  margin-bottom: 30px
+}
+
+.row label {
+  text-transform: capitalize;
   font-size: 14px;
+  font-weight: 500;
+  line-height: 34px;
+  margin-bottom: 0
+}
+
+input.form-control {
+  background:#D9D9D9
 }
 
 .error-message {
@@ -144,9 +155,15 @@ label {
   margin-top: 15px;
 }
 
+.g-recaptcha {
+  display: inline-block;
+  margin: 66px 0 36px;
+}
+
 /*tracking result*/
 .container h2 {
-  margin: 20vh 3vw
+  margin: 20vh 3vw;
+  text-transform: capitalize;
 }
 
 table {
@@ -165,22 +182,21 @@ th {
   text-transform: uppercase;
 }
 
-td a {
-  font-size: 22px;
-  color: hsl(0, 0%, 30%);
+td {
+  font-size: 14px;	
 }
 
-.g-recaptcha {
-  display: inline-block;
-  margin: 66px 0 36px;
+td a {
+  text-decoration: underline;
+  color: hsl(0, 0%, 30%);
 }
 
 .form-group {
   line-height: 60px;
 }
 
-.btn-info {
-  background: #1C59F6;
+button {
+  background: #ABD3F9;
   border: none;
   font-size: 14px;
   border-radius:5px;
@@ -190,7 +206,7 @@ td a {
   text-transform: uppercase;
 }
 
-.btn-info:hover {
+button:hover {
   background: #1C59F6;
 }
 

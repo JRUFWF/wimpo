@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req, res, next) => {
-  var siteKey = process.env.SITEKEY || '6Le-wvkSAAAAAPBMRTvw0Q4Muexq9bi0DJwx_mJ-';
+  var siteKey = process.env.SITEKEY || '6Lc514skAAAAANhxXowOKpi9z1ZT2f30hdqRI9C6';
   res.render('index', { page: 'Home', data: {siteKey} });
 });
 

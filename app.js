@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 app.use('/', indexRouter);
 app.post('/', function(req, res) {
     function returnError(errorMessage, formData = null) {
-        var siteKey = process.env.SITEKEY || '6Le-wvkSAAAAAPBMRTvw0Q4Muexq9bi0DJwx_mJ-';
+        var siteKey = process.env.SITEKEY || '6Lc514skAAAAANhxXowOKpi9z1ZT2f30hdqRI9C6';
         res.render('index', { page: 'Home', data: {siteKey, errorMessage, formData}  });
         return;
     }
@@ -31,13 +31,15 @@ app.post('/', function(req, res) {
         returnError('Please enter order number', req.body );
     }
     if(!(/^\d{5}(-\d{4})?$/).test(req.body['zipcode'])) {
-        returnError('Invalid US Zipcode (e.g.xxxxx or xxxxx-xxxx) : ' + req.body['zipcode'], req.body);
+        var zipcode = req.body['zipcode'];
+        req.body['zipcode'] = '';
+        returnError('Invalid US Zipcode (e.g.xxxxx or xxxxx-xxxx) : ' + zipcode, req.body);
     }
     if(req.body['g-recaptcha-response'] === undefined || req.body['g-recaptcha-response'] === '' || req.body['g-recaptcha-response'] === null)
     {
         returnError("recaptcha error", req.body);
     }
-    const secretKey = process.env.SECRETKEY || '174faff8fbc769e94a5862391ecfd010';
+    const secretKey = process.env.SECRETKEY || '6Lc514skAAAAALWshOv5kJ2xVLBj-7DDI6VSxdp4';
     const verificationURL = "https://www.google.com/recaptcha/api/siteverify?secret=" + secretKey + "&response=" + req.body['g-recaptcha-response'] + "&remoteip=" + req.connection.remoteAddress;
 
     request(verificationURL,function(error,response,body) {
@@ -45,8 +47,7 @@ app.post('/', function(req, res) {
             body = JSON.parse(body);
 
             if(body.success !== undefined && !body.success) {
-                // todo: with the real recaptcha credentials, should uncomment below
-                // returnError("Failed captcha verification", req.body);
+                returnError("Failed captcha verification", req.body);
             }
             var result = [];
             // todo: query result from api

@@ -1,22 +1,20 @@
 <div class="container">
     <form method="post" id="wimpo-form" action="/">
         <div class="row">
-            <div class="form-group">
-                <label for="order-number" class="col-sm-5 col-md-offset-1 col-sm-12">
-                    Please Enter your Purchase order number
-                </label>
-                <div class="col-md-4 col-sm-12">
-                    <input type="text" class="form-control" name="order-number" value="<%=data['formData'] && data['formData'] ? data['formData']['order-number']: '' %>">
-                </div>
+            <label for="order-number" class="col-sm-5 col-md-offset-1 col-sm-12">
+                Please Enter your Purchase order number
+            </label>
+            <div class="col-md-4 col-sm-12">
+                <input type="text" class="form-control" name="order-number" value="<%=data['formData'] && data['formData'] ? data['formData']['order-number']: '' %>">
             </div>
         </div>
         <div class="row">
-                <label for="zipcode" class="col-sm-5 col-md-offset-1 col-sm-12">
-                    Shipping zip code
-                </label>
-                <div class="col-md-4 col-sm-12">
-                    <input type="text" id="zipcode" class="form-control" name="zipcode" value="<%=data['formData'] && data['formData'] ? data['formData']['zipcode']: '' %>">
-                </div>
+            <label for="zipcode" class="col-sm-5 col-md-offset-1 col-sm-12">
+                Shipping zip code
+            </label>
+            <div class="col-md-4 col-sm-12">
+                <input type="text" id="zipcode" class="form-control" name="zipcode" value="<%=data['formData'] && data['formData'] ? data['formData']['zipcode']: '' %>">
+            </div>
         </div>
         <div class="row">
               <!-- add your domain data-sitekey below-->
